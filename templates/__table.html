@@ -1,0 +1,92 @@
+{% load staticfiles %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                <a href="/admbackend/order/index?sort=user_id" data-sort="user_id">ID Клиента</a>
+            </th>
+            <!--
+            <th>
+                <a href="/admbackend/order/index?sort=id" data-sort="id">Номер заявки</a>
+            </th>
+            -->
+            <!--
+            <th>
+                <a href="/admbackend/order/index?sort=date_add" data-sort="date_add">Дата добавления</a>
+            </th>
+            -->
+            <th>Фамилия Имя Отчество</th>
+            <th>E-mail</th>
+
+            <th>
+                <a href="/admbackend/order/index?sort=status_id" data-sort="status_id">Статус заявки</a>
+            </th>
+            <th>
+                <a href="/admbackend/order/index?sort=order_offer_status" data-sort="order_offer_status">Статус предложения</a>
+            </th>
+            <th class="action-column">&nbsp;</th>
+        </tr>
+        <tr id="w0-filters" class="filters">
+            <td>&nbsp;</td>
+            <td>
+                <input type="text" class="form-control" name="OrderSearch[user_id]">
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                <select class="form-control" name="OrderSearch[status_id]">
+                    <option value=""></option>
+                    <option value="1">Предварительная заявка</option>
+                    <option value="2">Заявка отправлена</option>
+                    <option value="3">Переговоры с кредиторами</option>
+                    <option value="4">Отправлено индивидуальное предложение </option>
+                    <option value="5">Договор подписан </option>
+                    <option value="6">Предоставлена справка о закрытии финансовых обязательств </option>
+                    <option value="7">Отказ </option>
+                    <option value="8">Предложение принято</option>
+                    <option value="9">Заявка нуждается в дополнительных уточнениях</option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" name="OrderSearch[order_offer_status]">
+                    <option value=""></option>
+                    <option value="1">В работе</option>
+                    <option value="2">Подготовлено предложение</option>
+                    <option value="3">Предложение на уточнении</option>
+                    <option value="4">Предложение принято</option>
+                </select>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </thead>
+
+{% if clients.count > 0 %}
+    <tbody>
+
+    {% for client in clients %}
+        <tr>
+            <td>{{ client.client_id }}</td>
+            <td>{{ client.client_name }}</td>
+            <td>{{ client.client_email }}</td>
+    <!--        <td>{{ client.client_phone }}</td> -->
+            <td>{{ client.client_status_info }}</td>
+            <td>{{ client.client_status_creditor }}</td>
+            <td>
+                <a href="/admbackend/user-personal/update?id=73" title="Перейти в личные данные" data-pjax="0">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+                <a href="/admbackend/order/view?id=130" title="Просмотр" aria-label="Просмотр" data-pjax="0">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+                <a href="/admbackend/order/update?id=130" title="Редактировать" aria-label="Редактировать" data-pjax="0">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a href="/admbackend/order/delete?id=130" title="Удалить" aria-label="Удалить" data-pjax="0" data-confirm="Вы уверены, что хотите удалить этот элемент?" data-method="post">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+{% endif %}
+</table>

@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<html style="height: auto;" lang="ru-RU">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewclients">
+        <title>{{ clientlist.desc }}</title>
+        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/screen.css" %}">
+    </head>
+<body>
+    <div class="pagetop"></div>
+<div class="box-body">
+    <h2>Список клиентов</h2>
+    <table class="style tablserter" cellpadding="0">
+        <thead>
+            <tr>
+                <th class="header">Фамилия Имя Отчество</th>
+                <th class="header">E-mail</th>
+                <th class="header">Статус</th>
+            </tr>
+        </thead>
+        {% for client in clientslist %}
+        <tbody>
+            <tr>
+                <td class="vcenter"><a href="/client/{{ client.id }}">{{client.client_name}}</a></td>
+                <td class="vcenter">{{client.client_email}}</td>
+                <td class="vcenter">{{client.client_status_info}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+</body>
+
+</html>

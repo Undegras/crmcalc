@@ -1,0 +1,197 @@
+{% load staticfiles %}
+<html style="height: auto;" lang="ru-RU">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewclients">
+        <title>{{ clientlist.desc }}</title>
+        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/AdminLTE.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/_all-skins.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.css" %}" >
+    </head>
+    <body class=" skin-blue  ">
+
+
+        <div class="wrapper">
+            <!-- header logo: style can be found in header.less -->
+            {% include "__header.html" %}
+            {% block content %} {% endblock %}
+
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="{% static "img/anonymous.jpg" %}" class="img-circle" />
+                    </div>
+                    <div class="pull-left info">
+                        <p>Привет, Doe Дмитрий 121231313</p>
+                        <a href="/admbackend/sign-in/profile">
+                            <i class="fa fa-circle text-success"></i>
+                            09.10.2018 12:23:56                        </a>
+                    </div>
+                </div>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">Main</li>
+                    <li>
+                        <a href="/admbackend/timeline-event/index">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span>Новые заявки</span>
+                            <span class="pull-right-container">
+                                <small class="label pull-right label-success">22</small>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i>
+                            <span>Справочник</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="/clients/index">
+                                    <i class="fa fa-angle-double-right"></i>
+                                    <span>Клиенты</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admbackend/article-category/index">
+                                    <i class="fa fa-angle-double-right"></i>
+                                    <span>Кредиторы</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--
+<li><a href="/admbackend/user-personal/index"><i class="fa fa fa-address-card"></i><span>Личные данные</span></a></li>
+<li class="active"><a href="/admbackend/order/index"><i class="fa fa fa-credit-card"></i><span>Заявки</span></a></li>
+<li><a href="/admbackend/credit/index"><i class="fa fa fa-users"></i><span>Все кредиты с заявок</span></a></li>
+<li><a href="/admbackend/document/index"><i class="fa fa fa-university"></i><span>Документы</span></a></li>
+<li><a href="/admbackend/document-template/index"><i class="fa fa fa-university"></i><span>Шаблоны документов</span></a></li>
+<li><a href="/admbackend/bank/index"><i class="fa fa fa-university"></i><span>Банки</span></a></li>
+<li><a href="/admbackend/faq/index"><i class="fa fa fa-university"></i><span>faq</span></a></li>
+<li class="treeview"><a href="/admbackend/order/#"><i class="fa fa fa-list"></i><span>Справочники</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class="treeview-menu">
+<li><a href="/admbackend/catalog-education/index"><i class="fa fa-angle-double-right"></i><span>Образование</span></a></li>
+<li><a href="/admbackend/catalog-marital-status/index"><i class="fa fa-angle-double-right"></i><span>Семейное положение</span></a></li>
+<li><a href="/admbackend/catalog-working/index"><i class="fa fa-angle-double-right"></i><span>Занятость</span></a></li>
+<li><a href="/admbackend/catalog-activity/index"><i class="fa fa-angle-double-right"></i><span>Вид деятельности</span></a></li>
+<li><a href="/admbackend/catalog-credit-type/index"><i class="fa fa-angle-double-right"></i><span>Типы кредитов</span></a></li>
+<li><a href="/admbackend/catalog-credit-overdue/index"><i class="fa fa-angle-double-right"></i><span>Срок просрочки</span></a></li>
+<li><a href="/admbackend/catalog-credit-sum/index"><i class="fa fa-angle-double-right"></i><span>Суммы кредита</span></a></li>
+<li><a href="/admbackend/catalog-order-status/index"><i class="fa fa-angle-double-right"></i><span>Статусы заявки</span></a></li>
+<li><a href="/admbackend/credit-status/index"><i class="fa fa-angle-double-right"></i><span>Статус переговоров</span></a></li>
+<li><a href="/admbackend/order-offer-status/index"><i class="fa fa-angle-double-right"></i><span>Статусы предложений</span></a></li>
+<li><a href="/admbackend/catalog-payment-purpose/index"><i class="fa fa-angle-double-right"></i><span>Словарь графиков платежей</span></a></li>
+</ul>
+</li>
+<li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Дополнительно</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class="treeview-menu">
+<li><a href="/admbackend/page/index"><i class="fa fa-angle-double-right"></i><span>Статические страницы</span></a></li>
+<li><a href="/admbackend/widget-text/index"><i class="fa fa-angle-double-right"></i><span>Текстовые виджеты</span></a></li>
+<li><a href="/admbackend/widget-menu/index"><i class="fa fa-angle-double-right"></i><span>Виджеты меню</span></a></li>
+<li><a href="/admbackend/widget-carousel/index"><i class="fa fa-angle-double-right"></i><span>Виджеты карусели</span></a></li>
+</ul>
+</li>
+<li><a href="/admbackend/user/index"><i class="fa fa-users"></i><span>Список пользователей</span></a></li>
+<li><a href="/admbackend/review/index"><i class="fa fa-list"></i><span>Отзывы</span></a></li>
+<li><a href="/admbackend/key-storage/index"><i class="fa fa-angle-double-right"></i><span>Ключ-Значение</span></a></li>
+<li class="header">
+Система
+</li>
+<li class="treeview"><a href="#"><i class="fa fa-cogs"></i><span>Other</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class="treeview-menu">
+<li class="treeview"><a href="#"><i class="fa fa-flag"></i><span>I18N</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class="treeview-menu">
+<li><a href="/admbackend/i18n/i18n-source-message/index"><i class="fa fa-angle-double-right"></i><span>Текст</span></a></li>
+<li><a href="/admbackend/i18n/i18n-message/index"><i class="fa fa-angle-double-right"></i><span>Перевод</span></a></li>
+</ul>
+</li>
+<li><a href="/admbackend/file-storage/index"><i class="fa fa-angle-double-right"></i><span>Файловое хранилище</span></a></li>
+<li><a href="/admbackend/cache/index"><i class="fa fa-angle-double-right"></i><span>Кеш</span></a></li>
+<li><a href="/admbackend/file-manager/index"><i class="fa fa-angle-double-right"></i><span>Менеджер файлов</span></a></li>
+<li><a href="/admbackend/system-information/index"><i class="fa fa-angle-double-right"></i><span>Информация о системе</span></a></li>
+<li><a href="/admbackend/log/index"><i class="fa fa-angle-double-right"></i><span>Журнал</span><span class="pull-right-container"><small class="label pull-right label-danger">858653</small></span></a></li>
+</ul>
+</li></ul>
+-->
+            </section>
+
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <aside class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>{{ pagename}}</h1>
+
+                <ol class="breadcrumb"><li><a href="https://economichelp.ru/admbackend">Главная</a></li>
+<li class="active">{{ pagename}}</li>
+</ol>            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                                    <div class="box">
+        <div class="box-body">
+            <div class="order-index">
+
+
+    <p>
+        <!-- Кнопки в форме
+        <a class="btn btn-success" href="/admbackend/order/create">Создать заявку</a>        <a class="btn btn-warning" href="/admbackend/order/export">Экспорт заявок</a>        <a class="btn btn-warning" href="/admbackend/order/export-credit">Экспорт кредитов</a>        <a class="btn btn-warning" href="/admbackend/order/export-graph">Экспорт графика погашения</a>        <a class="btn btn-warning" href="/admbackend/order/export-payment">Экспорт истории платежей</a>    </p>
+-->
+    <!-- кол-во записей
+    <div id="w0" class="grid-view"><div class="summary">Показаны записи <b>1-20</b> из <b>3 930</b>.</div>
+    -->
+                                <!-- Табличные данные -->
+    {% include "__table.html" %}
+    {% block table %} {% endblock %}
+
+
+
+<ul class="pagination"><li class="prev disabled"><span>&laquo;</span></li>
+<li class="active"><a href="/admbackend/order/index?page=1" data-page="0">1</a></li>
+<li><a href="/admbackend/order/index?page=2" data-page="1">2</a></li>
+<li><a href="/admbackend/order/index?page=3" data-page="2">3</a></li>
+<li><a href="/admbackend/order/index?page=4" data-page="3">4</a></li>
+<li><a href="/admbackend/order/index?page=5" data-page="4">5</a></li>
+<li><a href="/admbackend/order/index?page=6" data-page="5">6</a></li>
+<li><a href="/admbackend/order/index?page=7" data-page="6">7</a></li>
+<li><a href="/admbackend/order/index?page=8" data-page="7">8</a></li>
+<li><a href="/admbackend/order/index?page=9" data-page="8">9</a></li>
+<li><a href="/admbackend/order/index?page=10" data-page="9">10</a></li>
+<li class="next"><a href="/admbackend/order/index?page=2" data-page="1">&raquo;</a></li></ul>
+
+</div>
+</div>
+        </div>
+    </div>
+            </section><!-- /.content -->
+        </aside><!-- /.right-side -->
+    </div><!-- ./wrapper -->
+
+
+        <script src="{% static "js/jquery.js" %}"></script>
+        <script src="{% static "js/yii.js" %}"></script>
+        <script src="{% static "js/yii.gridView.js" %}"></script>
+        <script src="{% static "js/jquery-ui.js" %}"></script>
+        <script src="{% static "js/bootstrap.js" %}"></script>
+        <script src="{% static "js/jquery.slimscroll.min.js" %}"></script>
+        <script src="{% static "js/app.min.js" %}"></script>
+        <!--[if lt IE 9]>
+            <script src="{% static "js/html5shiv.min.js" %}"></script>
+        <![endif]-->
+        <script src="{% static "js/app.js" %}"></script>
+        <script type="text/javascript">jQuery(function ($) {
+jQuery('#w0').yiiGridView({"filterUrl":"\/admbackend\/order\/index","filterSelector":"#w0-filters input, #w0-filters select"});
+});</script>
+    </body>
+</html>
